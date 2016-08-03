@@ -1,0 +1,28 @@
+{
+  "name": "electron-windows-inno-installer",
+  "version": "0.0.1",
+  "description": "build installer by inno-setup",
+  "main": "index.js",
+  "bin": {
+    "electron-windows-inno-installer": "./cli.js"
+  },
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Qquanwei/electron-windows-inno-installer.git"
+  },
+  "keywords": [
+    "electron",
+    "inno",
+    "inno-setup",
+    "windows",
+    "installer"
+  ],
+  "author": "Qquanwei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Qquanwei/electron-windows-inno-installer/issues"
+  },
+  "homepage": "https://github.com/Qquanwei/electron-windows-inno-installer#readme"
+}
