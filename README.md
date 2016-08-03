@@ -12,10 +12,5 @@
 
 workflow:
 
-```flow
-st=>start: some file js/html/css
-e=>end: installer.exe
-op1=>operation: electron-prebuild
-op2=>operation: gulp-inno
-st->op1->op2->e
-```
+`(some html/js/css)` -> `electron-prebuild`  -> `gulp-inno` -> `installer.exe`
+
