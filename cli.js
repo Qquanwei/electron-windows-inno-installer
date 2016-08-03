@@ -55,8 +55,6 @@ process.env.INNOFILE=options.issfile;
 process.env.PLATFORMS=options.platforms;
 
 if(options.path) process.chdir(options.path);
-const gulpfile = path.resolve(path.dirname(__filename),'./gulpfile.js');
-
-console.log(process.cwd());
+const gulpfile = path.resolve(path.dirname(__filename),'electron-inno-auto-update/gulpfile.js');
 
 spawn('gulp', [`--gulpfile=${gulpfile}`,`--cwd=${process.cwd()}`,'inno'], { stdio: 'inherit' });
