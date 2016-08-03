@@ -30,10 +30,12 @@ the api same as 'https://github.com/electron/electron/blob/master/docs/api/auto-
 
 const autoupdater = require('electron-windows-inno-installer');
 
-autoupdater.setFeedURL('https://raw.githubusercontent.com/codeskyblue/electron-quick-start/master/example-feed.json');
+//support http/https 
+autoupdater.setFeedURL('https://raw.githubusercontent.com/codeskyblue/electron-quick-start/master/example-feed.json'); 
 
 autoupdater.on('update-downloaded',function(data){
   console.log('release notes: ',data.releaseNotes);
+  autoupdater.quitAndInstall(); // Upgrade
 });
 
 autoupdater.on('update-not-available',function(){
@@ -44,7 +46,6 @@ autoupdater.on('update-available',function(){
   console.log('INFO: Update available');
 });
 
-autoupdater.on('update-n')
 
 ```
 
