@@ -1,0 +1,1 @@
+./electron-inno-auto-update/inno-updater.js
