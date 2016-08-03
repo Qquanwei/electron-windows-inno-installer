@@ -6,6 +6,11 @@
 
 * `npm install electron-windows-inno-installer -g`
 
+
+## Required
+
+* wine
+
 ## Building Your Project
 
 * `electron-windows-inno-installer setup.iss`
@@ -13,4 +18,5 @@
 workflow:
 
 `(some html/js/css)` -> `electron-prebuild`  -> `gulp-inno` -> `installer.exe`
+
 
