@@ -1,0 +1,3 @@
+[submodule "electron-inno-auto-update"]
+	path = electron-inno-auto-update
+	url = git@github.com:Qquanwei/electron-inno-auto-update.git
