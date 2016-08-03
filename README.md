@@ -11,7 +11,8 @@
 * `electron-windows-inno-installer setup.iss`
 
 workflow:
-``flow
+
+```flow
 st=>start: some file js/html/css
 e=>end: installer.exe
 op1=>operation: electron-prebuild
