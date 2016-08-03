@@ -13,10 +13,24 @@
 
 ## Building Your Project
 
-* `electron-windows-inno-installer setup.iss`
+need your `*.iss` file in your work directory
 
-workflow:
+* `electron-windows-inno-installer ./setup.iss`
+
+
+
+## workflow:
 
 `(some html/js/css)` -> `electron-prebuild`  -> `gulp-inno` -> `installer.exe`
 
+
+## FAQ
+
+  There are some case in your building.
+
+* Download electron-v{version}-win32-x64.zip is slowly or failure
+
+download the file from `https://github.com/electron/electron/releases` or `https://npm.taobao.org/mirrors/electron/`, and unpack to work directory `releases/{version}/{platform}`.
+
+example `unzip /path/to/download/electron-v1.3.1-win32-x64.zip -d eleases/v1.3.1/win32-x64/`
 
