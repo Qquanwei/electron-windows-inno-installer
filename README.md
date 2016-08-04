@@ -11,11 +11,13 @@
 
 * wine
 
-## Building Your Project
+## Build Your Project
 
 need your `*.iss` file in your work directory
 
-* `electron-windows-inno-installer ./setup.iss`
+you can using `electron-windows-inno-installer --make-iss` and then `vim example.iss` to make your setup.iss file
+
+* `electron-windows-inno-installer ./setup.iss --platform win32-x64 --icon ./favicon.ico`
 
 
 ## AutoUpdater
