@@ -63,5 +63,4 @@ autoupdater.on('update-available',function(){
 
 download the file from `https://github.com/electron/electron/releases` or `https://npm.taobao.org/mirrors/electron/`, and unpack to work directory `releases/{version}/{platform}`.
 
-example `unzip /path/to/download/electron-v1.3.1-win32-x64.zip -d eleases/v1.3.1/win32-x64/`
-
+example `unzip /path/to/download/electron-v1.3.1-win32-x64.zip -d /your/project/.cache/v1.3.1/win32-x64/`
