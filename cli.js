@@ -10,6 +10,7 @@ function print_usag_and_exit() {
   console.log('\t--help:\n\t\tprint this message and exit');
   console.log('\t--path path:\n\t\tset work directory');
   console.log('\t--platforms plats\n\t\tset prebuild platforms,like\'s win32-x64,darwin-x64');
+  console.log('\t--icon iconpath\n\t\tset exefile icon');
   console.log('\t--make-iss make template file for inno iss');
   process.exit(1);
 }
