@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 "use strict"
 
+
 const spawn = require('child_process').spawn;
 const path = require('path');
+
 
 function print_usag_and_exit() {
   console.log(`usag:\n\telectron-window-inno-installer [options] issfile`);
@@ -12,7 +14,7 @@ function print_usag_and_exit() {
   console.log('\t--platforms plats\n\t\tset prebuild platforms,like\'s win32-x64,darwin-x64');
   console.log('\t--icon iconpath\n\t\tset exefile icon');
   console.log('\t--make-iss make template file for inno iss');
-  process.exit(1);
+    process.exit(1);
 }
 
 if (process.argv.length < 3) print_usag_and_exit();
@@ -37,7 +39,7 @@ while (argv.length) {
     case '--path':
       argv.shift();
       error(argv.length===0,'require path');
-      options['path'] = argv[0].startsWith('/') ? argv[0] : `${__dirname}${argv[0]}`;
+      options['path'] = argv[0].startsWith('/') ? argv[0] : path.resolve(process.cwd(),argv[0]);
       break;
     case '--platforms':
       argv.shift();
