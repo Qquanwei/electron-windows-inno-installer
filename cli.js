@@ -11,7 +11,7 @@ function print_usag_and_exit() {
   console.log('options:');
   console.log('\t--help:\n\t\tprint this message and exit');
   console.log('\t--path path:\n\t\tset work directory');
-  console.log('\t--platforms plats\n\t\tset prebuild platforms,like\'s win32-x64,darwin-x64');
+  console.log('\t--platform plats\n\t\tset prebuild platforms,like\'s win32-x64,darwin-x64');
   console.log('\t--icon iconpath\n\t\tset exefile icon');
   console.log('\t--make-iss make template file for inno iss');
     process.exit(1);
@@ -20,7 +20,7 @@ function print_usag_and_exit() {
 if (process.argv.length < 3) print_usag_and_exit();
 
 let options = {
-  'platforms': 'win32-x64',
+  'platform': 'win32-x64',
 };
 let argv = Array.prototype.concat([], process.argv);
 
@@ -41,10 +41,10 @@ while (argv.length) {
       error(argv.length===0,'require path');
       options['path'] = argv[0].startsWith('/') ? argv[0] : path.resolve(process.cwd(),argv[0]);
       break;
-    case '--platforms':
+    case '--platform':
       argv.shift();
       error(argv.length===0,'require platform');
-      options['platforms']=argv[0];
+      options['platform']=argv[0];
       break;
     case '--icon':
       argv.shift();
@@ -68,7 +68,7 @@ if(!options.issfile){
 }
 
 process.env.INNOFILE=options.issfile;
-process.env.PLATFORMS=options.platforms;
+process.env.PLATFORMS=options.platform;
 process.env.ICON=options.icon;
 
 options.path&&process.chdir(options.path);
