@@ -4,6 +4,8 @@
 
 const spawn = require('child_process').spawn;
 const path = require('path');
+const pkg = require('./package.json');
+const fs = require('fs');
 
 
 function print_usag_and_exit() {
@@ -14,7 +16,8 @@ function print_usag_and_exit() {
   console.log('\t--platform plats\n\t\tset prebuild platforms,like\'s win32-x64,darwin-x64');
   console.log('\t--icon iconpath\n\t\tset exefile icon');
   console.log('\t--make-iss make template file for inno iss');
-    process.exit(1);
+  console.log('\t--version\n\t\tprint version');
+  process.exit(1);
 }
 
 if (process.argv.length < 3) print_usag_and_exit();
@@ -56,14 +59,18 @@ while (argv.length) {
       console.log('success: output ./example.iss');
       process.exit(0);
       break;
+    case '--version':
+      console.log(pkg.version);
+      process.exit(0);
+      break;
     default:
       options['issfile'] = argv[0];
   }
   argv.shift();
 }
 
-if(!options.issfile){
-  console.error('error:  required issfile\n');
+if(!(options.issfile&&fs.existsSync(options.issfile))){
+  console.error('error:  required issfile or issfile not exists\n');
   print_usag_and_exit();
 }
 
