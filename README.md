@@ -63,6 +63,6 @@ autoupdater.on('update-available',function(){
 
 * Download electron-v{version}-win32-x64.zip is slowly or failure
 
-download the file from `https://github.com/electron/electron/releases` or `https://npm.taobao.org/mirrors/electron/`, and unpack to work directory `.cache/{version}/{platform}`.
+download the file from `https://github.com/electron/electron/releases` or `https://npm.taobao.org/mirrors/electron/` to directory `.cache/{version}/{platform}`.
 
-example `unzip /path/to/download/electron-v1.3.1-win32-x64.zip -d /your/project/.cache/v1.3.1/win32-x64/`
+example `wget https://npm.taobao.org/mirrors/electron/1.3.1/electron-v1.3.1-win32-ia32.zip -P /you/project/.cache/v1.3.1/win32-x64/`
