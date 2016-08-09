@@ -9,7 +9,7 @@
 
 ## Required
 
-* wine
+* wine `brew install wine --devel`
 
 ## Build Your Project
 
