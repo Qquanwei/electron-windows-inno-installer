@@ -2,7 +2,7 @@
 
 > demo for https://github.com/Qquanwei/electron-inno-auto-update
 
-view build progress: [https://github.com/Qquanwei/electron-windows-inno-installer/row/master/build.gif](https://github.com/Qquanwei/electron-windows-inno-installer/row/master/build.gif)
+view build progress: [https://github.com/Qquanwei/electron-windows-inno-installer/raw/master/build.gif](https://github.com/Qquanwei/electron-windows-inno-installer/raw/master/build.gif)
 
 ## Installation
 
