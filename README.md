@@ -2,7 +2,8 @@
 
 > demo for https://github.com/Qquanwei/electron-inno-auto-update
 
-![BuildYourProject](http://i4.piimg.com/4851/42476d5a6dca6825.gif)
+view build progress: `https://github.com/Qquanwei/electron-inno-update/raw/master/build.gif`
+
 ## Installation
 
 * `npm install electron-windows-inno-installer -g`
