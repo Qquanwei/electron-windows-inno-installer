@@ -46,8 +46,9 @@ autoupdater.on('update-not-available',function(){
   console.log('INFO: Update not available');
 });
 
-autoupdater.on('update-available',function(){
+autoupdater.on('update-available',function(next){
   console.log('INFO: Update available');
+  next(); //will be download
 });
 
 
