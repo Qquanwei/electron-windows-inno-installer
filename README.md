@@ -19,7 +19,10 @@ need your `*.iss` file in your work directory
 
 you can using `electron-windows-inno-installer --make-iss` and then `vim example.iss` to make your setup.iss file
 
-* `electron-windows-inno-installer ./setup.iss --platform win32-x64 --icon ./favicon.ico`
+```
+rm -rf release/
+electron-windows-inno-installer ./setup.iss --platform win32-x64 --icon ./favicon.ico
+```
 
 
 ## AutoUpdater
@@ -46,8 +49,8 @@ autoupdater.on('update-not-available',function(){
   console.log('INFO: Update not available');
 });
 
-autoupdater.on('update-available',function(next){
-  console.log('INFO: Update available');
+autoupdater.on('update-available',function(next,releasefile){
+  console.log('INFO: Update available',releasefile);
   next(); //will be download
 });
 
