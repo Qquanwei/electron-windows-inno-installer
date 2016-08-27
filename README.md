@@ -75,4 +75,4 @@ example `wget https://npm.taobao.org/mirrors/electron/1.3.1/electron-v1.3.1-win3
 
 ## Contribution
 
-I pleases to anyone contribute code, if you want to change `cli program` please fork the project . if you want to modify `module` you can fork `https://github.com/Qquanwei/electron-inno-auto-update/` this project and modify on `develop branch`.
+I'm very pleased with anyone contribute code, if you want to change `cli program` please fork the project . if you want to modify `module` you can fork `https://github.com/Qquanwei/electron-inno-auto-update/` this project and modify on `develop branch`.
