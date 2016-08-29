@@ -20,6 +20,19 @@ rm -rf release/
 electron-windows-inno-installer ./setup.iss --platform win32-x64 --icon ./favicon.ico
 ```
 
+electron-windows-inno-installer will pack all you local file without directory , if you want customs pack files ,you can use 'sourceFiles' field in you `package.json`
+like this 
+```
+    ...
+
+    "dependencies": {
+          "electron-windows-inno-installer": "^0.1.3"
+    },
+    "sourceFiles":[ "./index.js","./favicon.ico","./www/**/**"],
+
+    ...
+```
+
 
 ## AutoUpdater
 
