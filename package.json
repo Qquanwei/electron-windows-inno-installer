@@ -1,6 +1,6 @@
 {
   "name": "electron-windows-inno-installer",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "build installer by inno-setup",
   "main": "./electron-inno-auto-update/inno-updater.js",
   "bin": {
@@ -29,6 +29,7 @@
     "gulp": "^3.9.1",
     "gulp-electron": "^0.1.3",
     "gulp-inno": "0.0.7",
+    "http-signature": "^1.1.1",
     "js-downloader": "0.0.3",
     "underscore": "^1.8.3"
   }
