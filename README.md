@@ -47,7 +47,16 @@ the api same as 'https://github.com/electron/electron/blob/master/docs/api/auto-
 const autoupdater = require('electron-windows-inno-installer');
 
 //support http/https 
-autoupdater.setFeedURL('https://raw.githubusercontent.com/codeskyblue/electron-quick-start/master/example-feed.json'); 
+autoupdater.setFeedURL('http://demo/releases.json'); 
+
+// the file of release.json:
+//{
+  //"name": "demo1.1.2",
+  //"version": "1.1.2",
+  //"date": "2016-08-09",
+  //"changelog": "upgrade \n\n\n\n\n?",
+  //"updateURL": "http://10.8.3.31:8000/setup.exe"
+//}
 
 autoupdater.on('update-downloaded',function(data){
   console.log('release notes: ',data.releaseNotes);
