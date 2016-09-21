@@ -39,8 +39,6 @@ like this
 
 * npm install electron-windows-inno-installer --save
 
-the api same as 'https://github.com/electron/electron/blob/master/docs/api/auto-updater.md'
-
 ```javascript
 (electron app.js)
 
@@ -129,6 +127,31 @@ Emmitted when updater stopped work
 Returns: progress
 
 the downloaded progress
+
+
+## Methods
+
+### `setFeedURL`
+
+Params:
+* url : `string`
+
+set feed url
+
+### `checkForUpdates`
+
+Params:
+* isForce : `bool`
+
+if `isForce` is `true` , updater will do not check version 
+
+start updater , updater will feed a update object from feedurl,
+updater will checking this object that has field `version`
+
+### `quitAndinstall`
+
+when the event of `update-downloade` emmitted, thie method will quit-and-install
+the new installer
 
 ## FAQ
 
