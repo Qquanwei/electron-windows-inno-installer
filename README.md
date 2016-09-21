@@ -49,7 +49,7 @@ const autoupdater = require('electron-windows-inno-installer');
 //support http/https 
 autoupdater.setFeedURL('http://demo/releases.json'); 
 
-// the file of release.json:
+//release.json:
 //{
   //"name": "demo1.1.2",
   //"version": "1.1.2",
@@ -58,8 +58,9 @@ autoupdater.setFeedURL('http://demo/releases.json');
   //"updateURL": "http://10.8.3.31:8000/setup.exe"
 //}
 
-autoupdater.on('update-downloaded',function(data){
-  console.log('release notes: ',data.releaseNotes);
+autoupdater.on('update-downloaded',function(releasefileJSON,fullpath){
+  console.log('release notes: ',releasefileJSON.changelog)
+  console.log('write to :',fullpath);
   autoupdater.quitAndInstall(); // Upgrade
 });
 
@@ -67,15 +68,14 @@ autoupdater.on('update-not-available',function(){
   console.log('INFO: Update not available');
 });
 
-autoupdater.on('update-available',function(next,releasefile){
-  console.log('INFO: Update available',releasefile);
+autoupdater.on('update-available',function(releasefileJSON,next){
+  console.log('INFO: Update available',releasefileJSON);
   next(); //will be download
 });
 
 autoupdater.on('progress',function(progress){
   console.log(progress);  // download progress
 });
-
 
 ```
 
@@ -84,6 +84,51 @@ autoupdater.on('progress',function(progress){
 
 `(some html/js/css)` -> `electron-prebuild`  -> `gulp-inno` -> `installer.exe`
 
+
+## event
+
+### Event:`checking-for-update`
+
+Emmitted when updater starts checking update, after 'checkForupdates'
+
+### Event: `update-not-available`
+
+Emmitted when update unavailable,usually the version lowwer current version
+or server response is '204'
+
+### Event: `update-available`
+
+Returns:
+* releasejson : `object`
+* next : `function`
+
+Emmitted when update available, you will be invoke `next` tell updater to download this installer
+
+### Event: `update-downloaded`
+
+Returns:
+* releasejson: `object`
+* fullpath: `string`
+
+Emmitted when the installer package is downloaded. from then on , you can execute `updater.quitAndinstall()`
+to quit current process and install installer.
+
+### Event `error`
+
+Returns:
+* err : `object`
+
+Emmitted when throw a error
+
+### Event `done`
+
+Emmitted when updater stopped work
+
+### Event `progress`
+
+Returns: progress
+
+the downloaded progress
 
 ## FAQ
 

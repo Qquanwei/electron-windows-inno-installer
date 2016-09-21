@@ -82,6 +82,6 @@ options.path&&process.chdir(options.path);
 
 const gulpfile = path.resolve(path.dirname(__filename),'electron-inno-auto-update/gulpfile.js');
 
-
+process.NODE_ENV = 'test';
 
 spawn('gulp', [`--gulpfile=${gulpfile}`,`--cwd=${process.cwd()}`,'inno'], { stdio: 'inherit' });
