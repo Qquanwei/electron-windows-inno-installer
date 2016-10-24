@@ -2,7 +2,7 @@
   "name": "electron-windows-inno-installer",
   "version": "0.3.7",
   "description": "build installer by inno-setup",
-  "main": "./electron-inno-auto-update/inno-updater.js",
+  "main": "./inno-updater.js",
   "bin": {
     "electron-windows-inno-installer": "./cli.js"
   },
