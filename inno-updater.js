@@ -1,16 +1,4 @@
 'use strict'
-// file: update.js
-// author: codeskyblue
-// created: 2016-01-18
-// API reference: http://electron.atom.io/docs/v0.36.4/api/auto-updater/
-
-// changelog:
-// 2016-08-01:
-//  author: Qquanwei
-//  API reference: http://electron.atom.io/docs/api/auto-updater/
-//  upgrade to electronv1.3.1
-//  download to temp dictory as default
-
 const EventEmitter = require('events').EventEmitter;
 const remote = require('electron').remote;
 const app = (remote && remote.app) || require('electron').app;

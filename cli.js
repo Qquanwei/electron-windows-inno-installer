@@ -80,7 +80,7 @@ process.env.ICON=options.icon;
 
 options.path&&process.chdir(options.path);
 
-const gulpfile = path.resolve(path.dirname(__filename),'electron-inno-auto-update/gulpfile.js');
+const gulpfile = path.resolve(path.dirname(__filename),'gulpfile.js');
 
 process.NODE_ENV = 'test';
 
