@@ -4,6 +4,7 @@ var electron = require('gulp-electron');
 var fs = require('fs');
 
 var gnf = require('./npm-files')
+var electronVersion = require('./package.json').electronVersion;
 var pkg = require(`${process.cwd()}/package.json`)
 var compileDir = './compile';
 
@@ -33,7 +34,7 @@ gulp.task('electron', ['copy'], function() {
       cache: './.cache',
       packageJson: pkg,
       packaging: false,
-      version: 'v1.4.3',
+      version: electronVersion,
       platforms: process.env.PLATFORMS.split(','), 
       asar: true,
       asarUnpackDir: 'vendor',

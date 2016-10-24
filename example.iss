@@ -6,16 +6,15 @@
 #define MyAppURL "https://github.com"
 #define MyAppExeName "example.exe"
 #define MyAppPublisher "Qquanwei"
-#define SourcePath "release/v1.3.1/win32-x64/"
+#define SourcePath "release/v1.4.3/win32-ia32/"
 #define OutputPath "release"
 #define OutputName "setup"
-#define IconFile "favicon.ico"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{2ED8C195-24C5-4D1B-B839-DF300793C545}
+AppId={{2ED8C195-24C5-4D1B-BC49-DF300793C545}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
@@ -28,7 +27,6 @@ DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 OutputDir={#OutputPath}
 OutputBaseFilename={#OutputName}
-SetupIconFile={#IconFile}
 Compression=lzma
 SolidCompression=yes
 
@@ -47,7 +45,6 @@ Source: "{#SourcePath}/*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{#IconFile}" ;Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: quicklaunchicon
 
 [Run]
