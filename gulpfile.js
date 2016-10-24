@@ -7,9 +7,11 @@ var gnf = require('./npm-files')
 var electronVersion = require('./package.json').electronVersion;
 var pkg = require(`${process.cwd()}/package.json`)
 var compileDir = './compile';
+var clean = require('gulp-clean');
+var path = require('path');
+var R = require('ramda');
 
 gulp.task('version', function(){
-  // FIXME(ssx): https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/README.md
   var pkg = require(`${process.cwd()}/package.json`);
   fs.writeFileSync('version.json', JSON.stringify({
     version: pkg.version,
@@ -37,7 +39,6 @@ gulp.task('electron', ['copy'], function() {
       version: electronVersion,
       platforms: process.env.PLATFORMS.split(','), 
       asar: true,
-      asarUnpackDir: 'vendor',
       platformResources: {
         win: {
           "version-string": pkg.version,
@@ -50,8 +51,18 @@ gulp.task('electron', ['copy'], function() {
     .pipe(gulp.dest(""));
 })
 
-gulp.task('inno', ['electron'], function(){
-  return gulp.src(process.env.INNOFILE).pipe(inno());
-})
+gulp.task('prevent', ['electron'], function() {
+  return gulp.src(R.map(function(platform) {
+    let s = path.resolve(process.cwd(), `release/${electronVersion}/${platform}/resources/app/`);
+    console.log(s);
+    return s;
+  }, process.env.PLATFORMS.split(','))).pipe(clean({
+    force: true
+  }));
+});
+
+gulp.task('inno', ['prevent'], function() {
+  return gulp.src(process.env.INNOFILE).pipe(inno());  
+});
 
 gulp.task('default', ['copy'])
