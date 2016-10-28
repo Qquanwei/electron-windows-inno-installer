@@ -1,3 +1,4 @@
+"use strict"
 var gulp = require('gulp')
 var inno = require('gulp-inno');
 var electron = require('gulp-electron');
@@ -25,7 +26,9 @@ gulp.task('copy', ['version', 'copy:modules'], function(){
 })
 
 gulp.task('copy:modules', function(){
-  return gulp.src(gnf(), {base: './'}).pipe(gulp.dest(compileDir))
+  return gnf().then(function(src){
+    return Promise.resolve(gulp.src(src).pipe(gulp.dest(compileDir)));
+  });
 })
 
 gulp.task('electron', ['copy'], function() {
