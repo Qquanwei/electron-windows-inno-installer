@@ -17,7 +17,8 @@ function LoadJsonFile(filename){
 * @param {} pkgPath: string
 * @returns {} 
 */
-function Deps(pkgPath){
+function Deps(pkgPath,thinCache){
+  thinCache = thinCache|| [] ;
   const deps = R.keys(R.pathOr({},['dependencies'])(LoadJsonFile(path.resolve(pkgPath,"package.json"))));
   const deep = R.length(R.split('/',pkgPath));
   const findPackage = (baseDir,pkgName) => fs.existsSync(path.resolve(baseDir,"node_modules",pkgName));
@@ -29,10 +30,16 @@ function Deps(pkgPath){
       for(let i of R.range(0,deep)){
         p = path.resolve(pkgPath+'/../'.repeat(i),'node_modules',dep);
         if(fs.existsSync(p)){
-          Deps(path.resolve(p)).then(function(ary){
-            resolve(R.concat([p],ary));
-          });
-          done = true;
+          if(R.contains(p,thinCache)){
+            resolve([]);
+            return;
+          }else{
+            thinCache = R.concat([p],thinCache);
+            Deps(p).then(function(ary){
+              resolve(R.concat([p],ary));
+            });
+            done = true;
+          }
           break;
         }
       }
