@@ -14,8 +14,9 @@ function LoadJsonFile(filename){
 
 /**
 * recursion find dependencies path
-* @param {} pkgPath: string
-* @returns {} 
+* @param {} pkgPath
+* @param {} thinCache
+* @return Promise.resolve([paths])
 */
 function Deps(pkgPath,thinCache){
   thinCache = thinCache|| [] ;
@@ -35,7 +36,7 @@ function Deps(pkgPath,thinCache){
             return;
           }else{
             thinCache = R.concat([p],thinCache);
-            Deps(p).then(function(ary){
+            Deps(p, thinCache).then(function(ary) {
               resolve(R.concat([p],ary));
             });
             done = true;
