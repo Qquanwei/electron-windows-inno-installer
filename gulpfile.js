@@ -27,7 +27,7 @@ gulp.task('copy', ['version', 'copy:modules'], function(){
 
 gulp.task('copy:modules', function(){
   return gnf().then(function(src){
-    return Promise.resolve(gulp.src(src,{read: false}).pipe(gulp.dest(compileDir)));
+    return Promise.resolve(gulp.src(src,{base : "./"}).pipe(gulp.dest(compileDir)));
   });
 })
 
