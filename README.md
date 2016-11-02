@@ -1,5 +1,5 @@
 # Build Your Installer Easy to RELEASE & UPDATE
-
+[![Build Status](https://travis-ci.org/Qquanwei/electron-windows-inno-installer.svg?branch=master)](https://travis-ci.org/Qquanwei/electron-windows-inno-installer)
 ## Installation
 
 * `npm install electron-windows-inno-installer -g`
