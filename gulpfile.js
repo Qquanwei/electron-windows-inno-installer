@@ -65,7 +65,7 @@ gulp.task('prevent', ['electron'], function() {
 });
 
 gulp.task('inno', ['prevent'], function() {
-  return gulp.src(process.env.INNOFILE).pipe(inno());  
+  return gulp.src(process.env.INNOFILE).pipe(inno());
 });
 
 gulp.task('default', ['copy'])

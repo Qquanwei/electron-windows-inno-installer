@@ -84,4 +84,6 @@ const gulpfile = path.resolve(path.dirname(__filename),'gulpfile.js');
 
 process.NODE_ENV = 'test';
 
-spawn('gulp', [`--gulpfile=${gulpfile}`,`--cwd=${process.cwd()}`,'inno'], { stdio: 'inherit' });
+spawn('gulp', [`--gulpfile=${gulpfile}`,`--cwd=${process.cwd()}`,'inno'], { stdio: 'inherit' }).on('close',function(code){
+  process.exit(code);
+});
