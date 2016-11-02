@@ -1,6 +1,6 @@
 {
   "name": "electron-windows-inno-installer",
-  "version": "0.3.11",
+  "version": "0.3.20",
   "electronVersion": "v1.4.3",
   "description": "build installer by inno-setup",
   "main": "./inno-updater.js",
