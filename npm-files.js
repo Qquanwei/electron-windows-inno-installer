@@ -44,7 +44,7 @@ function Deps(pkgPath,thinCache){
           break;
         }
       }
-      done ? null : reject('can\'t find pkg:'+dep);
+      done ? null : reject('can\'t find pkg:'+dep+' for '+pkgPath);
     });
   },deps)).then(function(argv){
     return Promise.resolve(R.compose(R.uniq,R.flatten)(argv));

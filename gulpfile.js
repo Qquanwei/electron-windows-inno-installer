@@ -19,26 +19,30 @@ gulp.task('version', function(){
   }))
 })
 
-gulp.task('copy', ['version', 'copy:modules'], function(){
+gulp.task('copy', ['version','copy:modules'], function(){
   return gulp.src( pkg.sourceFiles || ['*.*'], 
     {base: process.cwd()})
-    .pipe(gulp.dest(compileDir))
-})
+    .pipe(gulp.dest(compileDir));
+});
 
 gulp.task('copy:modules', function(){
-  return gnf().then(function(src){
-    return Promise.resolve(gulp.src(src,{base : "./"}).pipe(gulp.dest(compileDir)));
-  });
-})
+  return new Promise(function(resolve,reject){
+    gnf().then(function(src){
+      gulp.src(src,{base : "./"})
+          .pipe(gulp.dest(compileDir))
+          .on('end',resolve);
+    });    
+  })
+});
 
-gulp.task('electron', ['copy'], function() {
+gulp.task('electron',['copy'], function() {
   return gulp.src("")
     .pipe(electron({
       src: './compile',
       release: './release',
       cache: './.cache',
       packageJson: pkg,
-      packaging: false,
+      packaging: true,
       version: electronVersion,
       platforms: process.env.PLATFORMS.split(','), 
       asar: true,
@@ -56,9 +60,7 @@ gulp.task('electron', ['copy'], function() {
 
 gulp.task('prevent', ['electron'], function() {
   return gulp.src(R.map(function(platform) {
-    let s = path.resolve(process.cwd(), `release/${electronVersion}/${platform}/resources/app/`);
-    console.log(s);
-    return s;
+    return path.resolve(process.cwd(), `release/${electronVersion}/${platform}/resources/app/`);
   }, process.env.PLATFORMS.split(','))).pipe(clean({
     force: true
   }));
