@@ -1,6 +1,6 @@
 {
   "name": "electron-windows-inno-installer",
-  "version": "0.3.20",
+  "version": "0.3.21",
   "electronVersion": "v1.4.3",
   "description": "build installer by inno-setup",
   "main": "./inno-updater.js",
@@ -8,7 +8,7 @@
     "electron-windows-inno-installer": "./cli.js"
   },
   "scripts": {
-    "test":"cd test && ../node_modules/.bin/mocha ./tes-npmfiles.js"
+    "test": "cd test && ../node_modules/.bin/mocha ./tes-npmfiles.js"
   },
   "repository": {
     "type": "git",
