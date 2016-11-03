@@ -1,6 +1,6 @@
 {
   "name": "electron-windows-inno-installer",
-  "version": "0.3.21",
+  "version": "0.3.22",
   "electronVersion": "v1.4.3",
   "description": "build installer by inno-setup",
   "main": "./inno-updater.js",
@@ -29,6 +29,7 @@
   "homepage": "https://github.com/Qquanwei/electron-windows-inno-installer#readme",
   "dependencies": {
     "follow-redirects": "^0.2.0",
+    "fs-extra": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-electron": "^0.1.3",
