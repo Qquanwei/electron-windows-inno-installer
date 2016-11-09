@@ -67,6 +67,7 @@ updater.downloadAndInstall = function(releaseJSON){
   const filename = `${releaseJSON.name}-upgrade.exe`;
   setupPath = path.resolve(directory,filename);
   downloader(releaseJSON.updateURL,{
+    resume: false,
     output:{
       path:directory,
       filename: filename
@@ -117,12 +118,16 @@ updater.checkForUpdates = function(isForce){
 }
 
 updater.quitAndInstall = function(){
-  cproc.spawn(setupPath, ['/SILENT'], {
-    detached: true,
-    stdio: ['ignore', 'ignore', 'ignore']
-  }).unref();
+  if(fs.existsSync(setupPath)){
+    setTimeout(function(){
+      cproc.spawn(setupPath, ['/SILENT'], {
+        detached: true,
+        stdio: ['ignore', 'ignore', 'ignore']
+      }).unref();
 
-  app.quit();
+      app.quit();
+    },1000);
+  }
 }
 
 module.exports = updater;
