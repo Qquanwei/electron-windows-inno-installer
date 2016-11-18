@@ -39,7 +39,6 @@ like this
 * #define SourcePath "release/v1.4.3/win32-ia32/"
 
 sourcePath is `release/{electron-version}/{platform}`
-electron-version is current `electron-windows-inno-installer` opposite electron version 
 
 * #define MyAppExeName "example.exe" 
 
