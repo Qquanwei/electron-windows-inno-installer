@@ -21,7 +21,7 @@ rm -rf release/
 electron-windows-inno-installer ./setup.iss --platform win32-x64 --icon ./favicon.ico
 ```
 
-electron-windows-inno-installer will pack all you local file without directory , if you want customs pack files ,you can use 'sourceFiles' field in you `package.json`
+electron-windows-inno-installer will pack all you local file *without directory* , if you want customs pack files ,you can use 'sourceFiles' field in you `package.json`
 like this 
 ```
     ...
@@ -33,6 +33,17 @@ like this
 
     ...
 ```
+
+### example.iss
+
+* #define SourcePath "release/v1.4.3/win32-ia32/"
+
+sourcePath is `release/{electron-version}/{platform}`
+electron-version is current `electron-windows-inno-installer` opposite electron version 
+
+* #define MyAppExeName "example.exe" 
+
+MyAppExeName is `{package.json.name}.exe`
 
 
 ## AutoUpdater
