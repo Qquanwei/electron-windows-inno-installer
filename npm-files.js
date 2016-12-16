@@ -20,10 +20,9 @@ function LoadJsonFile(filename){
 */
 function Deps(pkgPath,thinCache){
   thinCache = thinCache|| [] ;
-  const deps = R.keys(R.pathOr({},['dependencies'])(LoadJsonFile(path.resolve(pkgPath,"package.json"))));
-  const deep = R.length(R.split('/',pkgPath));
-  const findPackage = (baseDir,pkgName) => fs.existsSync(path.resolve(baseDir,"node_modules",pkgName));
-
+  let deps = R.keys(R.pathOr({},['dependencies'])(LoadJsonFile(path.resolve(pkgPath,"package.json"))));
+  const deep = R.length(R.split('/', pkgPath));
+  deps = R.filter(R.identity, deps);
   return Promise.all(R.map(function(dep){
     return new Promise(function(resolve,reject){
       let done = false;
@@ -46,9 +45,9 @@ function Deps(pkgPath,thinCache){
       }
       done ? null : reject('can\'t find pkg:'+dep+' for '+pkgPath);
     });
-  },deps)).then(function(argv){
+  }, deps)).then(function(argv){
     return Promise.resolve(R.compose(R.uniq,R.flatten)(argv));
-  }).catch(console.error);
+  },console.error).catch(console.error);
 }
 
 module.exports = function(name){
