@@ -84,8 +84,11 @@ updater.downloadAndInstall = function(releaseJSON){
     }).catch((e)=>{
       if(e.message === 'file is done') {
         this.emit('update-downloaded', releaseJSON,path.resolve(directory,filename));
-        this.emit('done');                   
+        this.emit('done');
+        return;
       }
+      this.emit('error', e)
+      this.emit('done');
     });
 }
 
