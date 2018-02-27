@@ -8,7 +8,7 @@
 
 ## 安装依赖
 
-mac 下使用homebrew, debian系使用apt
+mac 下使用homebrew, debian系使用apt, 或者直接使用下面的使用Docker构建.
 
 ```
 brew install wine --devel  # apt install wine
@@ -39,7 +39,13 @@ electron-windows-inno-installer 会将你当前目录下所有文件打包，但
  }
 ```
 
-## inno setup 配置
+### 使用Docker构建
+
+```
+docker run --rm -v ${pwd}:/app -w /app/ quanwei/electron-windows-inno-installer electron-windows-inno-installer ./example.iss --platform win32-x64
+```
+
+### inno setup 配置
 
 主要有下面两行需要重新配置
 

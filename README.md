@@ -5,10 +5,12 @@
 * `npm install electron-windows-inno-installer -g`
 
 
-## Required
+## Required(or using [[docker](#Build with Docker)])
 
 * wine `brew install wine --devel`
 * gulp `npm install gulp -g`
+
+
 
 ## Build Your Project
 
@@ -22,7 +24,7 @@ electron-windows-inno-installer ./setup.iss --platform win32-x64 --icon ./favico
 ```
 
 electron-windows-inno-installer will pack all you local file *without directory* , if you want customs pack files ,you can use 'sourceFiles' field in you `package.json`
-like this 
+like this
 ```
     ...
 
@@ -34,13 +36,19 @@ like this
     ...
 ```
 
+### Build with Docker
+
+```
+docker run --rm -v ${pwd}:/app -w /app/ quanwei/electron-windows-inno-installer electron-windows-inno-installer ./example.iss --platform win32-x64
+```
+
 ### example.iss
 
 * #define SourcePath "release/v1.4.3/win32-ia32/"
 
 sourcePath is `release/{electron-version}/{platform}`
 
-* #define MyAppExeName "example.exe" 
+* #define MyAppExeName "example.exe"
 
 MyAppExeName is `{package.json.name}.exe`
 
@@ -55,8 +63,8 @@ MyAppExeName is `{package.json.name}.exe`
 
 const autoupdater = require('electron-windows-inno-installer');
 
-//support http/https 
-autoupdater.setFeedURL('http://demo/releases.json'); 
+//support http/https
+autoupdater.setFeedURL('http://demo/releases.json');
 
 //release.json:
 //{
@@ -154,7 +162,7 @@ set feed url
 Params:
 * isForce : `bool`
 
-if `isForce` is `true` , updater will do not check version 
+if `isForce` is `true` , updater will do not check version
 
 start updater , updater will feed a update object from feedurl,
 updater will checking this object that has field `version`
