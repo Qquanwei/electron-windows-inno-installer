@@ -37,7 +37,8 @@
     "http-signature": "^1.1.1",
     "js-downloader": "^0.1.4",
     "ramda": "^0.22.1",
-    "semver": "^5.3.0"
+    "semver": "^5.3.0",
+    "template-file": "^3.0.1"
   },
   "devDependencies": {
     "mocha": "^3.1.2",

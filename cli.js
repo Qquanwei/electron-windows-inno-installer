@@ -4,6 +4,7 @@
 
 const spawn = require('child_process').spawn;
 const path = require('path');
+const { renderTemplateFile } = require('template-file');
 const pkg = require('./package.json');
 const fs = require('fs');
 
@@ -34,6 +35,8 @@ function error(cond,msg){
   }
 }
 
+let waitting = false;
+
 while (argv.length) {
   switch (argv[0]) {
     case '--help':
@@ -54,10 +57,15 @@ while (argv.length) {
       error(argv.length===0,'require icon');
       options['icon']=(argv[0].startsWith('/')? argv[0] : path.resolve(process.cwd(),argv[0]));
       break;
-    case '--make-iss':
-      spawn('cp',[path.resolve(path.dirname(__filename),'example.iss'),process.cwd()],{stdio:'inherit' });
-      console.log('success: output ./example.iss');
-      process.exit(0);
+  case '--make-iss':
+      renderTemplateFile(path.resolve(__dirname, 'example.iss'), {
+          electronVersion: pkg.electronVersion
+      }).then(fileString => {
+          fs.writeFileSync(path.resolve(process.cwd(), 'example.iss'), fileString);
+          console.log('success: output ./example.iss');
+          process.exit(0);
+      });
+      waitting = true;
       break;
     case '--version':
       console.log(pkg.version);
@@ -69,21 +77,23 @@ while (argv.length) {
   argv.shift();
 }
 
-if(!(options.issfile&&fs.existsSync(options.issfile))){
-  console.error('error:  required issfile or issfile not exists\n');
-  print_usag_and_exit();
+if (!waitting) {
+    if(!(options.issfile&&fs.existsSync(options.issfile))){
+        console.error('error:  required issfile or issfile not exists\n');
+        print_usag_and_exit();
+    }
+
+    process.env.INNOFILE=options.issfile;
+    process.env.PLATFORMS=options.platform;
+    process.env.ICON=options.icon;
+
+    options.path&&process.chdir(options.path);
+
+    const gulpfile = path.resolve(path.dirname(__filename),'gulpfile.js');
+
+    process.NODE_ENV = 'test';
+
+    spawn('gulp', [`--gulpfile=${gulpfile}`,`--cwd=${process.cwd()}`,'inno'], { stdio: 'inherit' }).on('close',function(code){
+        process.exit(code);
+    });
 }
-
-process.env.INNOFILE=options.issfile;
-process.env.PLATFORMS=options.platform;
-process.env.ICON=options.icon;
-
-options.path&&process.chdir(options.path);
-
-const gulpfile = path.resolve(path.dirname(__filename),'gulpfile.js');
-
-process.NODE_ENV = 'test';
-
-spawn('gulp', [`--gulpfile=${gulpfile}`,`--cwd=${process.cwd()}`,'inno'], { stdio: 'inherit' }).on('close',function(code){
-  process.exit(code);
-});
