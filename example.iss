@@ -6,7 +6,7 @@
 #define MyAppURL "https://github.com"
 #define MyAppExeName "example.exe"
 #define MyAppPublisher "Qquanwei"
-#define SourcePath "release/v1.4.3/win32-ia32/"
+#define SourcePath "release/v3.0.5/win32-ia32/"
 #define OutputPath "release"
 #define OutputName "setup"
 
@@ -49,4 +49,3 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Fil
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-
