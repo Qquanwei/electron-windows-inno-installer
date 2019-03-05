@@ -20,7 +20,7 @@ gulp.task('version', function(){
 })
 
 gulp.task('copy', ['version','copy:modules'], function(){
-  return gulp.src( pkg.sourceFiles || ['*.*'], 
+  return gulp.src( pkg.sourceFiles || ['*.*'],
     {base: process.cwd()})
     .pipe(gulp.dest(compileDir));
 });
@@ -31,7 +31,7 @@ gulp.task('copy:modules', function(){
       gulp.src(src,{base : "./"})
           .pipe(gulp.dest(compileDir))
           .on('end',resolve);
-    });    
+    });
   })
 });
 
@@ -44,7 +44,7 @@ gulp.task('electron',['copy'], function() {
       packageJson: pkg,
       packaging: true,
       version: electronVersion,
-      platforms: process.env.PLATFORMS.split(','), 
+      platforms: process.env.PLATFORMS.split(','),
       asar: true,
       platformResources: {
         win: {

@@ -4,9 +4,9 @@ const path = require('path');
 const fs = require('fs');
 
 /**
-* Load a file 
+* Load a file
 * @param {} filename: string
-* @returns {} 
+* @returns {}
 */
 function LoadJsonFile(filename){
   return fs.existsSync(filename) ? JSON.parse(fs.readFileSync(filename)) : {};
