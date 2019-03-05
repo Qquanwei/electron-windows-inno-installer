@@ -3,14 +3,13 @@ var gulp = require('gulp')
 var inno = require('gulp-inno');
 var electron = require('gulp-electron');
 var fs = require('fs');
-
-var gnf = require('./npm-files')
-var electronVersion = require('./package.json').electronVersion;
-var pkg = require(`${process.cwd()}/package.json`)
-var compileDir = './compile';
 var clean = require('gulp-clean');
 var path = require('path');
 var R = require('ramda');
+
+var gnf = require('./npm-files');
+var pkg = require(`${process.cwd()}/package.json`);
+var compileDir = './compile';
 
 gulp.task('version', function(){
   var pkg = require(`${process.cwd()}/package.json`);
@@ -43,7 +42,7 @@ gulp.task('electron',['copy'], function() {
       cache: './.cache',
       packageJson: pkg,
       packaging: true,
-      version: electronVersion,
+      version: process.env.ELECTRON_VERSION,
       platforms: process.env.PLATFORMS.split(','),
       asar: true,
       platformResources: {
@@ -60,7 +59,7 @@ gulp.task('electron',['copy'], function() {
 
 gulp.task('prevent', ['electron'], function() {
   return gulp.src(R.map(function(platform) {
-    return path.resolve(process.cwd(), `release/${electronVersion}/${platform}/resources/app/`);
+    return path.resolve(process.cwd(), `release/${process.env.ELECTRON_VERSION}/${platform}/resources/app/`);
   }, process.env.PLATFORMS.split(','))).pipe(clean({
     force: true
   }));
