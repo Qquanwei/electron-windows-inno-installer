@@ -3,9 +3,7 @@
 
 [![Docker Build Status](https://img.shields.io/docker/build/quanwei/electron-windows-inno-installer.svg)](https://hub.docker.com/r/quanwei/electron-windows-inno-installer/)
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=8LsJhDYZQPA
-" target="_blank"><img src="http://img.youtube.com/vi/8LsJhDYZQPA/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+[![Youtube](http://img.youtube.com/vi/8LsJhDYZQPA/0.jpg)](http://www.youtube.com/watch?feature=player_embedded&v=8LsJhDYZQPA)
 
 ## Installation
 
