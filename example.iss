@@ -6,7 +6,7 @@
 #define MyAppURL "https://github.com"
 #define MyAppExeName "example.exe"
 #define MyAppPublisher "Qquanwei"
-#define SourcePath "release/v3.0.5/win32-ia32/"
+#define SourcePath "release/v4.1.4/win32-x64/"
 #define OutputPath "release"
 #define OutputName "setup"
 
