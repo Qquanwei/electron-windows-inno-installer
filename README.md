@@ -44,7 +44,7 @@ like this
 ### Build with Docker
 
 ```
-docker run --rm -v ${pwd}:/app -w /app/ quanwei/electron-windows-inno-installer electron-windows-inno-installer ./example.iss --platform win32-x64
+docker run --rm -v ${pwd}:/app -w /app/ quanwei/electron-windows-inno-installer example.iss --platform win32-x64
 ```
 
 ### example.iss
