@@ -19,9 +19,10 @@ gulp.task('version', function(){
 })
 
 gulp.task('copy', ['version','copy:modules'], function(){
-  return gulp.src( pkg.sourceFiles || ['*.*'],
-    {base: process.cwd()})
-    .pipe(gulp.dest(compileDir));
+  return gulp.src(
+  	pkg.sourceFiles || ['**.**', '!node_modules/**/*'],
+    { base: process.cwd() }
+  ).pipe(gulp.dest(compileDir));
 });
 
 gulp.task('copy:modules', function(){
@@ -60,8 +61,9 @@ gulp.task('electron',['copy'], function() {
 gulp.task('prevent', ['electron'], function() {
   return gulp.src(R.map(function(platform) {
     return path.resolve(process.cwd(), `release/${process.env.ELECTRON_VERSION}/${platform}/resources/app/`);
-  }, process.env.PLATFORMS.split(','))).pipe(clean({
-    force: true
+  }, process.env.PLATFORMS.split(','))
+  ).pipe(clean({
+  	force: true
   }));
 });
 

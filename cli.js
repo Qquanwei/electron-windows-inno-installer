@@ -16,6 +16,7 @@ function print_usag_and_exit() {
   console.log('\t--platform plats\n\t\tset prebuild platforms,like\'s win32-x64,darwin-x64');
   console.log('\t--icon iconpath\n\t\tset exefile icon');
   console.log('\t--make-iss make template file for inno iss');
+  console.log('\t--electron-version\n\t\tv4.x.x target electron version');
   console.log('\t--version\n\t\tprint version');
   process.exit(1);
 }
