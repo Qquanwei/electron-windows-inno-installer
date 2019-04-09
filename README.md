@@ -1,5 +1,5 @@
 # Build Your Installer Easy to RELEASE & UPDATE
-[![Build Status](https://travis-ci.org/Qquanwei/electron-windows-inno-installer.svg?branch=master)](https://travis-ci.org/Qquanwei/electron-windows-inno-installer)
+[![npm version](https://badge.fury.io/js/electron-windows-inno-installer.svg)](https://badge.fury.io/js/electron-windows-inno-installer)
 
 [![Docker Build Status](https://img.shields.io/docker/build/quanwei/electron-windows-inno-installer.svg)](https://hub.docker.com/r/quanwei/electron-windows-inno-installer/)
 
