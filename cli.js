@@ -63,6 +63,12 @@ while (argv.length) {
       console.log(pkg.version);
       process.exit(0);
       break;
+    case '--electron-version':
+      argv.shift();
+      error(argv.length===0,'require electron-version');
+      console.log('electron-version:', argv[0]);
+      options['electron-version'] = argv[0];
+      break;
     default:
       options['issfile'] = argv[0];
   }
@@ -77,6 +83,7 @@ if(!(options.issfile&&fs.existsSync(options.issfile))){
 process.env.INNOFILE=options.issfile;
 process.env.PLATFORMS=options.platform;
 process.env.ICON=options.icon;
+process.env.ELECTRON_VERSION=options['electron-version'] || pkg.electronVersion;
 
 options.path&&process.chdir(options.path);
 

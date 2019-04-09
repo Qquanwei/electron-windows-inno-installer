@@ -79,7 +79,7 @@ updater.downloadAndInstall = function(releaseJSON){
            this.emit('done');
          }).pipe(req.stream).on('finish',()=>{
            this.emit('update-downloaded', releaseJSON,path.resolve(directory,filename));
-           this.emit('done');           
+           this.emit('done');
          });
     }).catch((e)=>{
       if(e.message === 'file is done') {
