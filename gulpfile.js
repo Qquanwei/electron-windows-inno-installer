@@ -20,15 +20,15 @@ gulp.task('version', function(){
 
 gulp.task('copy', ['version','copy:modules'], function(){
   return gulp.src(
-  	pkg.sourceFiles || ['**.**', '!node_modules/**/*'],
-    { base: process.cwd() }
+  	pkg.sourceFiles || ['**/**', '!node_modules/**/**', '!compile/**/**', '!release/**/**'],
+    { base: './' }
   ).pipe(gulp.dest(compileDir));
 });
 
 gulp.task('copy:modules', function(){
   return new Promise(function(resolve,reject){
     gnf().then(function(src){
-      gulp.src(src,{base : "./"})
+      gulp.src(src, { base : './' })
           .pipe(gulp.dest(compileDir))
           .on('end',resolve);
     });
