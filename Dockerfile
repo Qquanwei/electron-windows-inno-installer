@@ -1,6 +1,11 @@
 FROM node:latest
 
-RUN npm install gulp electron-windows-inno-installer -g
-RUN dpkg --add-architecture i386 && apt update && apt install wine32 zip -y
+COPY . /opt/electron-windows-inno-installer
 
-CMD ['electron-windows-inno-installer']
+RUN cd /opt/electron-windows-inno-installer && npm install
+RUN npm install gulp -g
+RUN dpkg --add-architecture i386
+RUN apt-get update 
+RUN apt install wine32 zip -y
+
+ENTRYPOINT ["node", "/opt/electron-windows-inno-installer/cli.js"]
